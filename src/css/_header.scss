@@ -50,6 +50,9 @@
             li {
                 a {
                     text-transform: capitalize;
+                    &.is-active {
+                        color: #ff1493;
+                    }
                 }
             }
         }

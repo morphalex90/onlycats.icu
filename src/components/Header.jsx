@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 export default function Header() {
     const [categories, setCategories] = useState([]);
     const [breeds, setBreeds] = useState([]);
+
+    const router = useRouter();
 
     useEffect(() => {
         getCategories();
@@ -39,7 +42,7 @@ export default function Header() {
                             <ul className="header__categories__list">
                                 {(categories.map(cat => {
                                     return (
-                                        <li key={cat.id}><Link href={'/category/' + cat.id}>{cat.name}</Link></li>
+                                        <li key={cat.id}><Link href={'/category/' + cat.id} className={router.asPath === ('/category/' + cat.id) ? 'is-active' : ''}>{cat.name}</Link></li>
                                     )
                                 }))}
                             </ul>

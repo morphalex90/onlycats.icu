@@ -10,10 +10,14 @@ export default function Category() {
     return (
         <>
             <Head>
-                <title>OnlyCats Category </title>
-                <meta name="description" content="OnlyCats cats" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="canonical" href={"https://onlycats.icu/category/" + (router.isReady ? router.query.category_id : '')} />
+                <title>OnlyCats Category {router.isReady ? router.query.category_id : ''}</title>
+                <meta name="description" content="Do you need cats? Are you having a bad day? Here you can find all the cats you need" />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content={"OnlyCats Category " + (router.isReady ? router.query.category_id : '')} />
+                <meta property="og:description" content="Do you need cats? Are you having a bad day? Here you can find all the cats you need" />
+                <meta property="og:url" content={"https://onlycats.icu/category/" + (router.isReady ? router.query.category_id : '')} />
             </Head>
             <Layout>
                 <section className="section">

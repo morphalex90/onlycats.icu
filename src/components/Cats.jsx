@@ -1,17 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { useRouter } from 'next/router';
+
+import { Breed } from '@/contex/BreedContext';
 
 export default function Cats({ category = null }) {
     const [cats, setCats] = useState([]);
 
+    const router = useRouter();
+
+    const { breed, setBreed } = useContext(Breed); // saved from contex
+
     useEffect(() => {
+        if (router.pathname !== '/category/[category_id]') {
+            setBreed(null);
+        }
+
         getCats();
-    }, [category]);
+    }, [category, breed]);
 
     const getCats = () => {
         axios
-            .get('https://api.thecatapi.com/v1/images/search?page=0&limit=30' + (category != null ? '&category_ids=' + category : ''))
+            .get('https://api.thecatapi.com/v1/images/search?page=0&limit=30' + (category != null ? '&category_ids=' + category : '') + (breed != null ? '&breed_ids=' + breed : ''))
             .then((res) => { setCats(res.data); })
             .catch((err) => { console.log(err); });
     }

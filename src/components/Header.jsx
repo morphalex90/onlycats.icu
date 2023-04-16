@@ -4,15 +4,24 @@ import axios from 'axios';
 
 export default function Header() {
     const [categories, setCategories] = useState([]);
+    const [breeds, setBreeds] = useState([]);
 
     useEffect(() => {
         getCategories();
+        // getBreeds();
     }, []);
 
     const getCategories = () => {
         axios
             .get('https://api.thecatapi.com/v1/categories?page=0&limit=15&api_key=' + process.env.NEXT_PUBLIC_CAT_API)
             .then((res) => { setCategories(res.data); })
+            .catch((err) => { console.log(err); });
+    }
+
+    const getBreeds = () => {
+        axios
+            .get('https://api.thecatapi.com/v1/breeds?page=0&limit=100&api_key=' + process.env.NEXT_PUBLIC_CAT_API)
+            .then((res) => { setBreeds(res.data); })
             .catch((err) => { console.log(err); });
     }
 
@@ -30,7 +39,19 @@ export default function Header() {
                             <ul className="header__categories__list">
                                 {(categories.map(cat => {
                                     return (
-                                        <li key={cat.id}>{cat.name}</li>
+                                        <li key={cat.id}><Link href={'/category/' + cat.id}>{cat.name}</Link></li>
+                                    )
+                                }))}
+                            </ul>
+                        </nav>
+                    }
+
+                    {breeds.length > 0 &&
+                        <nav>
+                            <ul className="header__categories__list">
+                                {(breeds.map(breed => {
+                                    return (
+                                        <li key={breed.id}>{breed.name}</li>
                                     )
                                 }))}
                             </ul>

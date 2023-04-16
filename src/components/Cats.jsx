@@ -6,7 +6,6 @@ export default function Cats({ category = null }) {
     const [cats, setCats] = useState([]);
 
     useEffect(() => {
-        console.log(category);
         getCats();
     }, [category]);
 

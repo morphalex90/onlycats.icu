@@ -13,7 +13,7 @@ export default function Home() {
 
 	const getCats = () => {
 		axios
-			.get('https://api.thecatapi.com/v1/images/search?page=0&limit=20')
+			.get('https://api.thecatapi.com/v1/images/search?page=0&limit=30&api_key=' + process.env.NEXT_PUBLIC_CAT_API)
 			.then((res) => { setCats(res.data); })
 			.catch((err) => { console.log(err); });
 	}

@@ -12,7 +12,7 @@ export default function Layout({ children }) {
     return (
         <>
             <Header />
-            <main id="main-content" style={{ paddingTop: (mainPadding !== null ? mainPadding : 61) }}>
+            <main id="main-content" style={{ paddingTop: (mainPadding !== null ? mainPadding : 58) }}>
                 {children}
             </main>
             <Footer />

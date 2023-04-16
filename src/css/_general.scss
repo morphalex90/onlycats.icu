@@ -16,7 +16,7 @@
 
 body {
     margin: 0;
-    font-family: "Fira Mono", monospace;
+    // font-family: "Fira Mono", monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #000;
@@ -24,21 +24,21 @@ body {
     color: #fff;
 }
 
-.visually-hidden {
-    background-color: #fff;
-    padding: 7px 3px;
-    border-radius: 0 0 3px 3px;
-    position: absolute;
-    left: 20px;
-    transform: translateY(-370%);
-    transition: transform 325ms ease-in;
-    color: #000 !important;
-    z-index: 1000;
+// .visually-hidden {
+//     background-color: #fff;
+//     padding: 7px 3px;
+//     border-radius: 0 0 3px 3px;
+//     position: absolute;
+//     left: 20px;
+//     transform: translateY(-370%);
+//     transition: transform 325ms ease-in;
+//     color: #000 !important;
+//     z-index: 1000;
 
-    &:focus {
-        transform: translateY(0);
-    }
-}
+//     &:focus {
+//         transform: translateY(0);
+//     }
+// }
 
 img {
     max-width: 100%;
@@ -55,37 +55,28 @@ a {
     }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-    margin-top: 0;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// p {
+//     margin-top: 0;
+// }
 
-h1 {
-    text-align: center;
+// h1 {
+//     text-align: center;
 
-    &::first-letter {
-        font-size: 30px;
-        color: #ff1493;
-    }
+//     &::first-letter {
+//         font-size: 30px;
+//         color: #ff1493;
+//     }
 
-    @media only screen and (min-width: 768px) {
-        text-align: left;
-    }
-}
-
-h2 {
-    text-align: center;
-    font-size: 16px;
-
-    @media only screen and (min-width: 768px) {
-        text-align: left;
-    }
-}
+//     @media only screen and (min-width: 768px) {
+//         text-align: left;
+//     }
+// }
 
 main {
     width: 95%;
@@ -96,34 +87,34 @@ main {
     overflow: hidden;
 }
 
-.d-flex {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+// .d-flex {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 15px;
 
-    @media only screen and (min-width: 768px) {
-        flex-direction: row;
-        flex-wrap: wrap;
+//     @media only screen and (min-width: 768px) {
+//         flex-direction: row;
+//         flex-wrap: wrap;
 
-        > * {
-            flex-grow: 1;
-            flex-basis: 0;
-        }
-    }
-}
+//         > * {
+//             flex-grow: 1;
+//             flex-basis: 0;
+//         }
+//     }
+// }
 
-.text-center {
-    text-align: center;
-}
+// .text-center {
+//     text-align: center;
+// }
 
-.text-right {
-    text-align: right;
-}
+// .text-right {
+//     text-align: right;
+// }
 
-ul {
-    margin-top: 0px;
-    padding-left: 15px;
-}
+// ul {
+//     margin-top: 0px;
+//     padding-left: 15px;
+// }
 
 .button {
     // display: inline-block;

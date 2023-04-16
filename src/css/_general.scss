@@ -79,9 +79,9 @@ a {
 // }
 
 main {
-    width: 95%;
+    // width: 95%;
     max-width: 100%;
-    margin: 0 auto;
+    // margin: 0 auto;
     padding-top: 58px;
     // min-height: calc(100vh - 46px);
     overflow: hidden;
@@ -129,5 +129,13 @@ main {
 
     &:hover {
         border: 1px solid #fff;
+    }
+}
+
+.section {
+    &__container {
+        width: 95%;
+        max-width: 1400px;
+        margin: auto;
     }
 }

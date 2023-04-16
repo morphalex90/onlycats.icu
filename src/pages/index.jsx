@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head'
 import axios from 'axios';
+import Layout from '@/components/Layout';
 
 export default function Home() {
 	const [cats, setCats] = useState([]);
@@ -25,13 +26,13 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<main>
+			<Layout>
 				<div>
 					{cats.length > 0 &&
-						<div>
+						<div className="cats">
 							{(cats.map(cat => {
 								return (
-									<div key={cat.id}>
+									<div key={cat.id} className="cats__single">
 										<img src={cat.url} alt={cat.id} height={cat.height} width={cat.width} />
 									</div>
 								)
@@ -40,7 +41,7 @@ export default function Home() {
 						</div>
 					}
 				</div>
-			</main>
+			</Layout>
 		</>
 	)
 }

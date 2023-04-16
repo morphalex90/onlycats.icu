@@ -1,0 +1,15 @@
+.cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    &__single {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+
+        @media screen and (min-width: 780px) {
+            max-width: 48%;
+        }
+    }
+}

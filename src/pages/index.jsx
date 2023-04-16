@@ -8,16 +8,15 @@ export default function Home() {
 	const [cats, setCats] = useState([]);
 
 	useEffect(() => {
+		getCats();
+	}, []);
+
+	const getCats = () => {
 		axios
 			.get('https://api.thecatapi.com/v1/images/search?page=0&limit=20')
-			.then((res) => {
-				// console.log(res.data);
-				setCats(res.data);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}, []);
+			.then((res) => { setCats(res.data); })
+			.catch((err) => { console.log(err); });
+	}
 
 	return (
 		<>
@@ -28,19 +27,18 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Layout>
-				<div>
-					{cats.length > 0 &&
-						<ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 992: 3, 1200: 4 }}>
-							<Masonry>
-								{(cats.map(cat => {
-									return (
-										<img key={cat.id} src={cat.url} alt={cat.id} height={cat.height} width={cat.width} loading="lazy" />
-									)
-								}))}
-							</Masonry>
-						</ResponsiveMasonry>
-					}
-				</div>
+				{cats.length > 0 &&
+					<ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 992: 3, 1200: 4 }}>
+						<Masonry>
+							{(cats.map(cat => {
+								return (
+									<img key={cat.id} src={cat.url} alt={cat.id} height={cat.height} width={cat.width} loading="lazy" />
+								)
+							}))}
+						</Masonry>
+					</ResponsiveMasonry>
+				}
+				<button type="button" className="button" style={{ position: 'fixed', left: '50%', bottom: 50, zIndex: 999, transform: 'translateX(-50%)' }} onClick={() => getCats()}>Get more cats</button>
 			</Layout>
 		</>
 	)

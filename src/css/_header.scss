@@ -14,4 +14,41 @@
         max-width: 95%;
         margin: auto;
     }
+
+    &__logo {
+        width: 100%;
+        text-align: center;
+
+        @media only screen and (min-width: 768px) {
+            max-width: 200px;
+            text-align: left;
+        }
+    }
+
+    &__categories {
+        width: 100%;
+
+        @media only screen and (min-width: 768px) {
+            max-width: calc(100% - 200px);
+        }
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+
+            @media only screen and (min-width: 768px) {
+                justify-content: flex-end;
+            }
+
+            margin: 0;
+            padding-left: 0;
+            list-style-type: none;
+
+            li {
+                text-transform: capitalize;
+            }
+        }
+    }
 }

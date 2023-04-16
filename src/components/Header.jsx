@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+
+import { Breed } from '@/contex/BreedContext';
 
 export default function Header() {
     const [categories, setCategories] = useState([]);
@@ -9,10 +11,15 @@ export default function Header() {
 
     const router = useRouter();
 
+    const { breed, setBreed } = useContext(Breed);
+
     useEffect(() => {
         getCategories();
-        // getBreeds();
-    }, []);
+
+        if (router.pathname !== '/category/[category_id]') {
+            getBreeds();
+        }
+    }, [breed]);
 
     const getCategories = () => {
         axios
@@ -48,13 +55,15 @@ export default function Header() {
                             </ul>
                         </nav>
                     }
+                </div>
 
+                <div className="header__breeds">
                     {breeds.length > 0 &&
                         <nav>
-                            <ul className="header__categories__list">
+                            <ul className="header__breeds__list">
                                 {(breeds.map(breed => {
                                     return (
-                                        <li key={breed.id}>{breed.name}</li>
+                                        <li key={breed.id} onClick={() => setBreed(breed.id)}>{breed.name}</li>
                                     )
                                 }))}
                             </ul>

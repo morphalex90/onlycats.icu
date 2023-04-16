@@ -6,7 +6,10 @@ export default function Layout({ children }) {
     const [mainPadding, setMainPadding] = useState(null);
 
     useEffect(() => {
-        setMainPadding(document.getElementsByClassName('header')[0].offsetHeight);
+        setTimeout(function () {
+            setMainPadding(document.getElementsByClassName('header')[0].offsetHeight);
+
+        }, 200);
     }, [mainPadding]);
 
     return (

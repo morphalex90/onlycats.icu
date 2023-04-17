@@ -11,8 +11,8 @@ export default function Document() {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#43ba87" />
         <meta name="apple-mobile-web-app-title" content="OnlyCats" />
         <meta name="application-name" content="OnlyCats" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#000000" />
       </Head>
       <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>

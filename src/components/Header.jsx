@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-
 import { Breed } from '@/contex/BreedContext';
+import telegram from '@/img/telegram.png';
+import Image from 'next/image';
 
 export default function Header() {
     const [categories, setCategories] = useState([]);
@@ -52,6 +53,7 @@ export default function Header() {
                                         <li key={cat.id}><Link href={'/category/' + cat.id} className={router.asPath === ('/category/' + cat.id) ? 'is-active' : ''}>{cat.name}</Link></li>
                                     )
                                 }))}
+                                <li><Link href="https://t.me/+C6ZhfIzJVL84M2M0" target="_blank" rel="noreferrer"><Image src={telegram} height="20" width="20" alt="Telegram" title="Join the Telegram channel" /></Link></li>
                             </ul>
                         </nav>
                     }

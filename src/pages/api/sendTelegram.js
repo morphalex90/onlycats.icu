@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Telegram = async (req, res) => {
-    const apiToken = '5637414760:AAH-aF8WDzNu8gouM_Y0RFba2bKTNWkhWn0';
+    const apiToken = process.env.TELEGRAM_API_TOKEN;
 
     axios
         .get('https://api.thecatapi.com/v1/images/search?page=0&limit=1')

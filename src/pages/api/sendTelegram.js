@@ -17,7 +17,9 @@ const Telegram = async (req, res) => {
                 headers: { 'Content-Type': 'application/json' },
             })
         })
-        .catch((err) => { console.log(err); });
+        .catch((err) => {
+            // console.log(err);
+        });
 
     return res.status(200).json({ success: true })
 };

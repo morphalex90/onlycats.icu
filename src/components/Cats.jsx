@@ -16,7 +16,6 @@ export default function Cats({ category = null }) {
         if (router.pathname !== '/category/[category_id]') {
             setBreed(null);
         }
-
         getCats();
     }, [category, breed]);
 

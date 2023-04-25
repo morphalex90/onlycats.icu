@@ -48,11 +48,9 @@ export default function Header() {
                     {categories.length > 0 &&
                         <nav>
                             <ul className="header__categories__list">
-                                {(categories.map(cat => {
-                                    return (
-                                        <li key={cat.id}><Link href={'/category/' + cat.id} className={router.asPath === ('/category/' + cat.id) ? 'is-active' : ''}>{cat.name}</Link></li>
-                                    )
-                                }))}
+                                {(categories.map(cat =>
+                                    <li key={cat.id}><Link href={'/category/' + cat.id} className={router.asPath === ('/category/' + cat.id) ? 'is-active' : ''}>{cat.name}</Link></li>
+                                ))}
                                 <li><Link href="https://t.me/+C6ZhfIzJVL84M2M0" target="_blank" rel="noreferrer"><Image src={telegram} height="20" width="20" alt="Telegram" title="Join the Telegram channel" /></Link></li>
                             </ul>
                         </nav>
@@ -63,11 +61,9 @@ export default function Header() {
                     {breeds.length > 0 &&
                         <nav>
                             <ul className="header__breeds__list">
-                                {(breeds.map(breed => {
-                                    return (
-                                        <li key={breed.id} onClick={() => setBreed(breed.id)}>{breed.name}</li>
-                                    )
-                                }))}
+                                {(breeds.map(tmpBreed =>
+                                    <li key={tmpBreed.id} onClick={() => setBreed(tmpBreed.id)}>{tmpBreed.name}</li>
+                                ))}
                             </ul>
                         </nav>
                     }

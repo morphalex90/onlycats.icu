@@ -62,7 +62,7 @@ export default function Header() {
                         <nav>
                             <ul className="header__breeds__list">
                                 {(breeds.map(tmpBreed =>
-                                    <li key={tmpBreed.id} onClick={() => setBreed(tmpBreed.id)}>{tmpBreed.name}</li>
+                                    <li key={tmpBreed.id}><button type="button" onClick={() => setBreed(tmpBreed.id)}>{tmpBreed.name}</button></li>
                                 ))}
                             </ul>
                         </nav>

@@ -25,7 +25,6 @@ export default function Category() {
                         <Cats category={router.isReady ? router.query.category_id : null} />
                     </div>
                 </section>
-
             </Layout>
         </>
     )

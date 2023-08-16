@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Breed } from '@/contex/BreedContext';
 import telegram from '@/img/telegram.png';
-import Image from 'next/image';
 
 export default function Header() {
     const [categories, setCategories] = useState([]);

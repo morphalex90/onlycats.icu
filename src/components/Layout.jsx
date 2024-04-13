@@ -8,7 +8,6 @@ export default function Layout({ children }) {
     useEffect(() => {
         setTimeout(function () {
             setMainPadding(document.getElementsByClassName('header')[0].offsetHeight);
-
         }, 200);
     }, [mainPadding]);
 

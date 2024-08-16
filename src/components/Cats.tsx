@@ -1,11 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import { useRouter } from 'next/router';
 
 import { Breed } from '@/contex/BreedContext';
+import Image from 'next/image';
 
-export default function Cats({ category = null }) {
+export default function Cats({ category = null }: { category?: any }) {
     const [cats, setCats] = useState([]);
 
     const router = useRouter();
@@ -31,11 +32,9 @@ export default function Cats({ category = null }) {
             {cats.length > 0 &&
                 <ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 992: 3, 1200: 4 }}>
                     <Masonry>
-                        {(cats.map(cat => {
-                            return (
-                                <img key={cat.id} src={cat.url} alt={cat.id} title={cat.id} height={cat.height} width={cat.width} loading="lazy" />
-                            )
-                        }))}
+                        {cats.map((cat: any) =>
+                            <Image key={cat.id} src={cat.url} alt={cat.id} title={cat.id} height={cat.height} width={cat.width} unoptimized />
+                        )}
                     </Masonry>
                 </ResponsiveMasonry>
             }

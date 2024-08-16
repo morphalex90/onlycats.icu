@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-const Telegram = async (req, res) => {
+const Telegram = async (req: NextApiRequest, res: NextApiResponse) => {
     const apiToken = process.env.TELEGRAM_API_TOKEN;
 
     await axios

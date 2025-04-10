@@ -18,7 +18,7 @@ const Telegram = async (req: NextApiRequest, res: NextApiResponse) => {
                 headers: { 'Content-Type': 'application/json' },
             })
         })
-        .catch((err) => {
+        .catch(() => {
             // console.log(err);
         });
 

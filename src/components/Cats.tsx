@@ -5,8 +5,9 @@ import { useRouter } from 'next/router';
 
 import { Breed } from '@/contex/BreedContext';
 import Image from 'next/image';
+import { Cat } from '@/types';
 
-export default function Cats({ category = null }: { category?: any }) {
+export default function Cats({ category = null }: { category?: string | null | string[] }) {
     const [cats, setCats] = useState([]);
 
     const router = useRouter();
@@ -15,7 +16,7 @@ export default function Cats({ category = null }: { category?: any }) {
 
     useEffect(() => {
         if (router.pathname !== '/category/[category_id]') {
-            setBreed(null);
+            setBreed('');
         }
         getCats();
     }, [category, breed]);
@@ -32,7 +33,7 @@ export default function Cats({ category = null }: { category?: any }) {
             {cats.length > 0 &&
                 <ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 992: 3, 1200: 4 }}>
                     <Masonry>
-                        {cats.map((cat: any) =>
+                        {cats.map((cat: Cat) =>
                             <Image key={cat.id} src={cat.url} alt={cat.id} title={cat.id} height={cat.height} width={cat.width} unoptimized />
                         )}
                     </Masonry>

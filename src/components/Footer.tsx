@@ -4,8 +4,14 @@ export default function Footer() {
             <div className="footer__container">
                 <div className="footer__logo">OnlyCats</div>
                 <div className="footer__copyright">
-                    &copy; {new Date().getFullYear()}  &nbsp;<a href="https://www.pieronanni.me" target="_blank" rel="noreferrer">Piero Nanni </a>
-                    - <a href="https://www.buymeacoffee.com/morphalex90" target="_blank" rel="noreferrer">Buy me a 🍺</a>
+                    &copy; {new Date().getFullYear()} &nbsp;
+                    <a href="https://www.pieronanni.me" target="_blank" rel="noreferrer">
+                        Piero Nanni{' '}
+                    </a>
+                    -{' '}
+                    <a href="https://www.buymeacoffee.com/morphalex90" target="_blank" rel="noreferrer">
+                        Buy me a 🍺
+                    </a>
                 </div>
             </div>
         </footer>

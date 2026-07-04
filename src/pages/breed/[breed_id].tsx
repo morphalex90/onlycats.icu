@@ -104,9 +104,11 @@ export default function BreedPage({ breed, initialCats }: Props) {
                                     return (
                                         <li key={key}>
                                             <span className="content__traits-label">{label}</span>
-                                            <span className="content__traits-meter" aria-label={`${value} out of 5`}>
-                                                {'★'.repeat(value)}
-                                                {'☆'.repeat(Math.max(0, 5 - value))}
+                                            <span className="content__traits-meter" role="img" aria-label={`${value} out of 5`}>
+                                                <span aria-hidden="true">
+                                                    {'★'.repeat(value)}
+                                                    {'☆'.repeat(Math.max(0, 5 - value))}
+                                                </span>
                                             </span>
                                         </li>
                                     )

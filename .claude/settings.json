@@ -4,7 +4,9 @@
       "Bash(npm run *)",
       "Bash(npm install *)",
       "Bash(npx next *)",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "Bash(npx tsc *)",
+      "Bash(npx eslint *)"
     ]
   }
 }

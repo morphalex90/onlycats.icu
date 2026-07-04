@@ -16,8 +16,11 @@ export default function Layout({ children }: { children: ReactNode }) {
 
     return (
         <>
+            <a href="#main-content" className="skip-link">
+                Skip to content
+            </a>
             <Header />
-            <main id="main-content" style={{ paddingTop: mainPadding }}>
+            <main id="main-content" tabIndex={-1} style={{ paddingTop: mainPadding }}>
                 {children}
             </main>
             <Footer />

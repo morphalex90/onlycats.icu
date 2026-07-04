@@ -92,12 +92,19 @@
                     background-color: transparent;
                     border: 0;
                     font-size: inherit;
-                    color: inherit;
+                    color: #000;
                     font-family: inherit;
                     font-weight: inherit;
                     cursor: pointer;
                     margin: inherit;
                     white-space: nowrap;
+
+                    // Keep readable black text on the pink pill instead of the
+                    // global pink hover (which would be pink-on-pink).
+                    &:hover {
+                        color: #000 !important;
+                        text-decoration: underline;
+                    }
 
                     &.is-active {
                         text-decoration: underline;

@@ -5,12 +5,12 @@
 }
 
 ::-moz-selection {
-    color: #fff;
+    color: #000;
     background: #ff1493;
 }
 
 ::selection {
-    color: #fff;
+    color: #000;
     background: #ff1493;
 }
 
@@ -24,21 +24,29 @@ body {
     color: #fff;
 }
 
-// .visually-hidden {
-//     background-color: #fff;
-//     padding: 7px 3px;
-//     border-radius: 0 0 3px 3px;
-//     position: absolute;
-//     left: 20px;
-//     transform: translateY(-370%);
-//     transition: transform 325ms ease-in;
-//     color: #000 !important;
-//     z-index: 1000;
+.skip-link {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 14px;
+    border-radius: 0 0 6px 6px;
+    background-color: #fff;
+    color: #000 !important;
+    font-weight: bold;
+    transform: translateY(-200%);
+    transition: transform 200ms ease-in;
 
-//     &:focus {
-//         transform: translateY(0);
-//     }
-// }
+    &:focus {
+        transform: translateY(0);
+    }
+}
+
+// Visible keyboard focus indicator (WCAG 2.4.7)
+:focus-visible {
+    outline: 3px solid #ff1493;
+    outline-offset: 2px;
+}
 
 img {
     max-width: 100%;
@@ -121,13 +129,14 @@ main {
     border-radius: 15px;
     cursor: pointer;
     background-color: #ff1493;
-    color: #fff;
+    color: #000;
     border: 1px solid #ff1493;
     transition: all 0.4s;
     font-weight: bold;
     font-size: 15px;
 
     &:hover {
+        color: #000 !important;
         border: 1px solid #fff;
     }
 }

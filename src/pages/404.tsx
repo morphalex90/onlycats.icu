@@ -14,7 +14,7 @@ export default function page404() {
                 <section className="section">
                     <div className="section__container">
                         <div style={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <div>No cats found, please try again</div>
+                            <h1>No cats found, please try again</h1>
                         </div>
                     </div>
                 </section>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import dynamic from 'next/dynamic'
-import { useContext, useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const ResponsiveMasonry = dynamic(() => import('react-responsive-masonry').then((mod) => mod.ResponsiveMasonry), {
     loading: () => <p>Loading...</p>,
@@ -11,18 +11,17 @@ const Masonry = dynamic(() => import('react-responsive-masonry').then((mod) => m
     ssr: false,
 })
 
-import { useRouter } from 'next/router'
-
-import { Breed } from '@/contex/BreedContext'
 import { Cat } from '@/types'
 import Image from 'next/image'
 
-export default function Cats({ category = null }: { category?: string | null | string[] }) {
-    const [cats, setCats] = useState([])
+type CatsProps = {
+    category?: string | null
+    breed?: string | null
+    initialCats?: Cat[]
+}
 
-    const router = useRouter()
-
-    const { breed, setBreed } = useContext(Breed) // saved from contex
+export default function Cats({ category = null, breed = null, initialCats = [] }: CatsProps) {
+    const [cats, setCats] = useState<Cat[]>(initialCats)
 
     const getCats = () => {
         axios
@@ -34,15 +33,7 @@ export default function Cats({ category = null }: { category?: string | null | s
             .then((res) => {
                 setCats(res.data)
             })
-        // .catch((err) => { console.log(err); });
     }
-
-    useEffect(() => {
-        if (router.pathname !== '/category/[category_id]') {
-            setBreed('')
-        }
-        getCats()
-    }, [category, breed])
 
     return (
         <>
@@ -50,7 +41,15 @@ export default function Cats({ category = null }: { category?: string | null | s
                 <ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 992: 3, 1200: 4 }}>
                     <Masonry>
                         {cats.map((cat: Cat) => (
-                            <Image key={cat.id} src={cat.url} alt={cat.id} title={cat.id} height={cat.height} width={cat.width} unoptimized />
+                            <Image
+                                key={cat.id}
+                                src={cat.url}
+                                alt={cat.name || `Cat photo ${cat.id}`}
+                                title={cat.name || cat.id}
+                                height={cat.height}
+                                width={cat.width}
+                                unoptimized
+                            />
                         ))}
                     </Masonry>
                 </ResponsiveMasonry>

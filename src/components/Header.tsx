@@ -1,40 +1,32 @@
-import { Breed } from '@/contex/BreedContext'
 import telegram from '@/img/telegram.png'
-import { BreedType, Cat } from '@/types'
+import { Breed, Category } from '@/types'
 import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Header() {
-    const [categories, setCategories] = useState([])
-    const [breeds, setBreeds] = useState([])
+    const [categories, setCategories] = useState<Category[]>([])
+    const [breeds, setBreeds] = useState<Breed[]>([])
 
     const router = useRouter()
 
-    const { breed, setBreed } = useContext(Breed)
-
     useEffect(() => {
         getCategories()
-
-        if (router.pathname !== '/category/[category_id]') {
-            getBreeds()
-        }
-    }, [breed])
+        getBreeds()
+    }, [])
 
     const getCategories = () => {
         axios.get('https://api.thecatapi.com/v1/categories?page=0&limit=15&api_key=' + process.env.NEXT_PUBLIC_CAT_API).then((res) => {
             setCategories(res.data)
         })
-        // .catch((err) => { console.log(err); });
     }
 
     const getBreeds = () => {
         axios.get('https://api.thecatapi.com/v1/breeds?page=0&limit=100&api_key=' + process.env.NEXT_PUBLIC_CAT_API).then((res) => {
             setBreeds(res.data)
         })
-        // .catch((err) => { console.log(err); });
     }
 
     return (
@@ -46,9 +38,9 @@ export default function Header() {
 
                 <div className="header__categories">
                     {categories.length > 0 && (
-                        <nav>
+                        <nav aria-label="Categories">
                             <ul className="header__categories__list">
-                                {categories.map((cat: Cat) => (
+                                {categories.map((cat: Category) => (
                                     <li key={cat.id}>
                                         <Link href={'/category/' + cat.id} className={router.asPath === '/category/' + cat.id ? 'is-active' : ''}>
                                             {cat.name}
@@ -67,13 +59,16 @@ export default function Header() {
 
                 <div className="header__breeds">
                     {breeds.length > 0 && (
-                        <nav>
+                        <nav aria-label="Breeds">
                             <ul className="header__breeds__list">
-                                {breeds.map((tmpBreed: BreedType) => (
-                                    <li key={tmpBreed.id}>
-                                        <button type="button" onClick={() => setBreed(tmpBreed.id)}>
-                                            {tmpBreed.name}
-                                        </button>
+                                {breeds.map((breed: Breed) => (
+                                    <li key={breed.id}>
+                                        <Link
+                                            href={'/breed/' + breed.id}
+                                            className={router.asPath === '/breed/' + breed.id ? 'is-active' : ''}
+                                        >
+                                            {breed.name}
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

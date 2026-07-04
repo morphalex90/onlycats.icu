@@ -1,6 +1,6 @@
 import axios from 'axios'
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const ResponsiveMasonry = dynamic(() => import('react-responsive-masonry').then((mod) => mod.ResponsiveMasonry), {
     ssr: false,
@@ -32,6 +32,13 @@ export default function Cats({ category = null, breed = null, initialCats = [] }
                 setCats(res.data)
             })
     }
+
+    // Fallback: if the build-time fetch returned nothing (API error/rate-limit),
+    // load cats on mount so the gallery is never empty.
+    useEffect(() => {
+        if (initialCats.length === 0) getCats()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <>

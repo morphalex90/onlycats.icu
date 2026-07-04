@@ -5,7 +5,7 @@ import Link from 'next/link'
 const SITE = 'https://onlycats.icu'
 
 export default function About() {
-    const title = 'About OnlyCats — Who We Are'
+    const title = 'About OnlyCats: Who We Are'
     const description = 'OnlyCats is a free cat-photo gallery built by Mor. Learn who runs the site, where the photos come from, and how to get in touch.'
 
     const jsonLd = {
@@ -28,9 +28,15 @@ export default function About() {
                 <title>{title}</title>
                 <meta name="description" content={description} />
                 <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="OnlyCats" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
                 <meta property="og:url" content={`${SITE}/about`} />
+
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:title" content={title} />
+                <meta name="twitter:description" content={description} />
+
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             </Head>
             <Layout>
@@ -45,7 +51,7 @@ export default function About() {
 
                             <h2 className="content__subtitle">Who runs this site</h2>
                             <p>
-                                OnlyCats is built and maintained by Mor, a web developer. It is an independent, personal project — not a company, not an AI content
+                                OnlyCats is built and maintained by Mor, a web developer. It is an independent, personal project, not a company, not an AI content
                                 farm. Real person, real cats.
                             </p>
 

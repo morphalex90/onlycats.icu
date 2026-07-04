@@ -16,8 +16,10 @@ export default function CategoryPage({ category, initialCats }: Props) {
     const id = String(category.id)
     const label = category.name.charAt(0).toUpperCase() + category.name.slice(1)
     const url = `${SITE}/category/${id}`
-    const title = `Cats with ${label} — Funny Cat Photos | OnlyCats`
-    const description = `A hand-picked gallery of cat photos featuring ${category.name}. Fresh cats every visit — free to browse on OnlyCats.`
+    const title = `Cats with ${label} | Funny Cat Photos | OnlyCats`
+    const description = `A hand-picked gallery of cat photos featuring ${category.name}. Fresh cats every visit, free to browse on OnlyCats.`
+    const ogImage = initialCats[0]
+    const imageAlt = `Cat photo with ${category.name}`
 
     return (
         <>
@@ -26,9 +28,29 @@ export default function CategoryPage({ category, initialCats }: Props) {
                 <title>{title}</title>
                 <meta name="description" content={description} />
                 <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="OnlyCats" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
                 <meta property="og:url" content={url} />
+                {ogImage && (
+                    <>
+                        <meta property="og:image" content={ogImage.url} />
+                        <meta property="og:image:secure_url" content={ogImage.url} />
+                        <meta property="og:image:alt" content={imageAlt} />
+                        <meta property="og:image:width" content={String(ogImage.width)} />
+                        <meta property="og:image:height" content={String(ogImage.height)} />
+                    </>
+                )}
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={title} />
+                <meta name="twitter:description" content={description} />
+                {ogImage && (
+                    <>
+                        <meta name="twitter:image" content={ogImage.url} />
+                        <meta name="twitter:image:alt" content={imageAlt} />
+                    </>
+                )}
             </Head>
             <Layout>
                 <section className="section">

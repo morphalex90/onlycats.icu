@@ -6,7 +6,12 @@
       "Bash(npx next *)",
       "Bash(echo \"exit: $?\")",
       "Bash(npx tsc *)",
-      "Bash(npx eslint *)"
+      "Bash(npx eslint *)",
+      "Bash(node -e ' *)",
+      "Bash(echo \"exit $?\")",
+      "Bash(node -e \"const sharp=require\\('sharp'\\);const fs=require\\('fs'\\);const svg=fs.readFileSync\\('/private/tmp/claude-501/-Users-pieronanni-Documents-GitHub-onlycats-icu/d41edcec-b1e2-4546-9f2e-1d3b99ae9bdb/scratchpad/favicon.svg'\\);Promise.all\\([16,32,48].map\\(s=>sharp\\(svg,{density:300}\\).resize\\(s,s\\).png\\(\\).toFile\\('/private/tmp/claude-501/-Users-pieronanni-Documents-GitHub-onlycats-icu/d41edcec-b1e2-4546-9f2e-1d3b99ae9bdb/scratchpad/ico'+s+'.png'\\)\\)\\).then\\(\\(\\)=>console.log\\('ok'\\)\\)\")",
+      "Bash(magick __TRACKED_VAR__/ico16.png __TRACKED_VAR__/ico32.png __TRACKED_VAR__/ico48.png public/favicon.ico)",
+      "Bash(magick identify *)"
     ]
   }
 }

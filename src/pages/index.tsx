@@ -17,6 +17,7 @@ type Props = {
 export default function Home({ breeds, categories, initialCats }: Props) {
     const title = 'OnlyCats: Free Cat Photos, Breeds & Funny Cats'
     const description = 'Thousands of free cat photos in one place. Browse by breed or category, discover cat facts, and get a fresh set of cats on every click.'
+    const ogImage = `${SITE}/og-image.png`
 
     const jsonLd = {
         '@context': 'https://schema.org',
@@ -33,10 +34,25 @@ export default function Home({ breeds, categories, initialCats }: Props) {
                 <link rel="canonical" href={SITE} />
                 <title>{title}</title>
                 <meta name="description" content={description} />
+
                 <meta property="og:type" content="website" />
+                <meta property="og:site_name" content="OnlyCats" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={description} />
                 <meta property="og:url" content={SITE} />
+                <meta property="og:image" content={ogImage} />
+                <meta property="og:image:secure_url" content={ogImage} />
+                <meta property="og:image:type" content="image/png" />
+                <meta property="og:image:alt" content="OnlyCats: free cat photos, breeds and funny cats" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={title} />
+                <meta name="twitter:description" content={description} />
+                <meta name="twitter:image" content={ogImage} />
+                <meta name="twitter:image:alt" content="OnlyCats: free cat photos, breeds and funny cats" />
+
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             </Head>
             <Layout>

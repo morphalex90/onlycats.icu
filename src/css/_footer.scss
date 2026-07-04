@@ -32,4 +32,15 @@
             text-align: right;
         }
     }
+
+    &__nav {
+        width: 100%;
+        order: 3;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
 }

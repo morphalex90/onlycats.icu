@@ -1,30 +1,69 @@
 import Cats from '@/components/Cats'
 import Layout from '@/components/Layout'
+import { getCategories, getCategory, getCats } from '@/lib/catApi'
+import { Cat, Category } from '@/types'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 
-export default function Category() {
-    const router = useRouter()
+const SITE = 'https://onlycats.icu'
+
+type Props = {
+    category: Category
+    initialCats: Cat[]
+}
+
+export default function CategoryPage({ category, initialCats }: Props) {
+    const id = String(category.id)
+    const label = category.name.charAt(0).toUpperCase() + category.name.slice(1)
+    const url = `${SITE}/category/${id}`
+    const title = `Cats with ${label} — Funny Cat Photos | OnlyCats`
+    const description = `A hand-picked gallery of cat photos featuring ${category.name}. Fresh cats every visit — free to browse on OnlyCats.`
 
     return (
         <>
             <Head>
-                <link rel="canonical" href={'https://onlycats.icu/category/' + (router.isReady ? router.query.category_id : '')} />
-                <title>OnlyCats Category {router.isReady ? router.query.category_id : ''}</title>
-                <meta name="description" content="Do you need cats? Are you having a bad day? Here you can find all the cats you need" />
-
+                <link rel="canonical" href={url} />
+                <title>{title}</title>
+                <meta name="description" content={description} />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content={'OnlyCats Category ' + (router.isReady ? router.query.category_id : '')} />
-                <meta property="og:description" content="Do you need cats? Are you having a bad day? Here you can find all the cats you need" />
-                <meta property="og:url" content={'https://onlycats.icu/category/' + (router.isReady ? router.query.category_id : '')} />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={description} />
+                <meta property="og:url" content={url} />
             </Head>
             <Layout>
                 <section className="section">
                     <div className="section__container">
-                        <Cats category={router.isReady ? router.query.category_id : null} />
+                        <article className="content">
+                            <h1 className="content__title">Cats with {label}</h1>
+                            <p className="content__lead">
+                                Every cat below is wearing or paired with {category.name}. Hit &ldquo;Get new cats&rdquo; for a
+                                fresh set any time.
+                            </p>
+                        </article>
+                        <Cats category={id} initialCats={initialCats} />
                     </div>
                 </section>
             </Layout>
         </>
     )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const categories = await getCategories()
+    return {
+        paths: categories.map((c) => ({ params: { category_id: String(c.id) } })),
+        fallback: 'blocking',
+    }
+}
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+    const id = params?.category_id as string
+    const category = await getCategory(id)
+    if (!category) return { notFound: true, revalidate: 86400 }
+
+    const initialCats = await getCats({ category: id, limit: 12 })
+    return {
+        props: { category, initialCats },
+        revalidate: 86400,
+    }
 }

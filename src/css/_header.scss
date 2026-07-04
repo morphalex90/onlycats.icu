@@ -87,7 +87,8 @@
                 padding: 7px 13px;
                 // cursor: pointer;
 
-                button {
+                button,
+                a {
                     background-color: transparent;
                     border: 0;
                     font-size: inherit;
@@ -96,6 +97,11 @@
                     font-weight: inherit;
                     cursor: pointer;
                     margin: inherit;
+                    white-space: nowrap;
+
+                    &.is-active {
+                        text-decoration: underline;
+                    }
                 }
             }
         }

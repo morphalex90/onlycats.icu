@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 export default function Header() {
     const [categories, setCategories] = useState<Category[]>([])
     const [breeds, setBreeds] = useState<Breed[]>([])
+    const [menuOpen, setMenuOpen] = useState(false)
 
     const router = useRouter()
 
@@ -16,6 +17,11 @@ export default function Header() {
         getCategories()
         getBreeds()
     }, [])
+
+    // Close the mobile menu whenever the route changes.
+    useEffect(() => {
+        setMenuOpen(false)
+    }, [router.asPath])
 
     const getCategories = () => {
         axios.get('https://api.thecatapi.com/v1/categories?page=0&limit=15&api_key=' + process.env.NEXT_PUBLIC_CAT_API).then((res) => {
@@ -34,9 +40,22 @@ export default function Header() {
             <div className="header__container">
                 <div className="header__logo">
                     <Link href="/">OnlyCats</Link>
+
+                    <button
+                        type="button"
+                        className="header__toggle"
+                        aria-expanded={menuOpen}
+                        aria-controls="header-categories"
+                        aria-label="Menu"
+                        onClick={() => setMenuOpen((open) => !open)}
+                    >
+                        <span className="header__toggle__bar" />
+                        <span className="header__toggle__bar" />
+                        <span className="header__toggle__bar" />
+                    </button>
                 </div>
 
-                <div className="header__categories">
+                <div id="header-categories" className={'header__categories' + (menuOpen ? ' is-open' : '')}>
                     {categories.length > 0 && (
                         <nav aria-label="Categories">
                             <ul className="header__categories__list">

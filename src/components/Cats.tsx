@@ -3,11 +3,9 @@ import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
 const ResponsiveMasonry = dynamic(() => import('react-responsive-masonry').then((mod) => mod.ResponsiveMasonry), {
-    loading: () => <p>Loading...</p>,
     ssr: false,
 })
 const Masonry = dynamic(() => import('react-responsive-masonry').then((mod) => mod.default), {
-    loading: () => <p>Loading...</p>,
     ssr: false,
 })
 
@@ -37,23 +35,25 @@ export default function Cats({ category = null, breed = null, initialCats = [] }
 
     return (
         <>
-            {cats.length > 0 && (
-                <ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 992: 3, 1200: 4 }}>
-                    <Masonry>
-                        {cats.map((cat: Cat) => (
-                            <Image
-                                key={cat.id}
-                                src={cat.url}
-                                alt={cat.name || `Cat photo ${cat.id}`}
-                                title={cat.name || cat.id}
-                                height={cat.height}
-                                width={cat.width}
-                                unoptimized
-                            />
-                        ))}
-                    </Masonry>
-                </ResponsiveMasonry>
-            )}
+            <div className="cats" style={{ minHeight: '100vh' }}>
+                {cats.length > 0 && (
+                    <ResponsiveMasonry columnsCountBreakPoints={{ 768: 2, 992: 3, 1200: 4 }}>
+                        <Masonry>
+                            {cats.map((cat: Cat) => (
+                                <Image
+                                    key={cat.id}
+                                    src={cat.url}
+                                    alt={cat.name || `Cat photo ${cat.id}`}
+                                    title={cat.name || cat.id}
+                                    height={cat.height}
+                                    width={cat.width}
+                                    unoptimized
+                                />
+                            ))}
+                        </Masonry>
+                    </ResponsiveMasonry>
+                )}
+            </div>
             <button
                 type="button"
                 className="button"

@@ -5,7 +5,7 @@ import Link from 'next/link'
 const SITE = 'https://onlycats.icu'
 
 export default function About() {
-    const title = 'About OnlyCats — Who We Are'
+    const title = 'About OnlyCats: Who We Are'
     const description = 'OnlyCats is a free cat-photo gallery built by Mor. Learn who runs the site, where the photos come from, and how to get in touch.'
 
     const jsonLd = {
@@ -45,7 +45,7 @@ export default function About() {
 
                             <h2 className="content__subtitle">Who runs this site</h2>
                             <p>
-                                OnlyCats is built and maintained by Mor, a web developer. It is an independent, personal project — not a company, not an AI content
+                                OnlyCats is built and maintained by Mor, a web developer. It is an independent, personal project, not a company, not an AI content
                                 farm. Real person, real cats.
                             </p>
 

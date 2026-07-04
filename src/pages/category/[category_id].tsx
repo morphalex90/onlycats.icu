@@ -16,8 +16,8 @@ export default function CategoryPage({ category, initialCats }: Props) {
     const id = String(category.id)
     const label = category.name.charAt(0).toUpperCase() + category.name.slice(1)
     const url = `${SITE}/category/${id}`
-    const title = `Cats with ${label} — Funny Cat Photos | OnlyCats`
-    const description = `A hand-picked gallery of cat photos featuring ${category.name}. Fresh cats every visit — free to browse on OnlyCats.`
+    const title = `Cats with ${label} | Funny Cat Photos | OnlyCats`
+    const description = `A hand-picked gallery of cat photos featuring ${category.name}. Fresh cats every visit, free to browse on OnlyCats.`
 
     return (
         <>

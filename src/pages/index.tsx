@@ -15,7 +15,7 @@ type Props = {
 }
 
 export default function Home({ breeds, categories, initialCats }: Props) {
-    const title = 'OnlyCats — Free Cat Photos, Breeds & Funny Cats'
+    const title = 'OnlyCats: Free Cat Photos, Breeds & Funny Cats'
     const description = 'Thousands of free cat photos in one place. Browse by breed or category, discover cat facts, and get a fresh set of cats on every click.'
 
     const jsonLd = {
@@ -43,7 +43,7 @@ export default function Home({ breeds, categories, initialCats }: Props) {
                 <section className="section">
                     <div className="section__container">
                         <article className="content">
-                            <h1 className="content__title">OnlyCats — all the cats you need</h1>
+                            <h1 className="content__title">OnlyCats: all the cats you need</h1>
                             <p className="content__lead">
                                 Having a bad day? You are in the right place. OnlyCats is a free gallery of cat photos. Browse
                                 a specific cat breed, filter by category, or just hit &ldquo;Get new cats&rdquo; for an endless

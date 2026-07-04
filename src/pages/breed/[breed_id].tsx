@@ -26,7 +26,7 @@ const traits: { key: keyof Breed; label: string }[] = [
 
 export default function BreedPage({ breed, initialCats }: Props) {
     const url = `${SITE}/breed/${breed.id}`
-    const title = `${breed.name} Cat — Photos, Temperament & Facts | OnlyCats`
+    const title = `${breed.name} Cat: Photos, Temperament & Facts | OnlyCats`
     const description =
         breed.description?.slice(0, 155) ||
         `Browse ${breed.name} cat photos and learn about their temperament, origin and care.`

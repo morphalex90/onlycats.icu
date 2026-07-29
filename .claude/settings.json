@@ -17,7 +17,10 @@
       "Bash(echo \"exit:$?\")",
       "Bash(git --no-pager diff HEAD -- package.json)",
       "Read(//Applications/Google Chrome.app/Contents/MacOS/**)",
-      "Read(//Applications/**)"
+      "Read(//Applications/**)",
+      "Bash(curl -sS -I https://onlycats.icu/sitemap.xml)",
+      "Bash(curl -sS https://onlycats.icu/sitemap.xml)",
+      "Bash(curl -sS -A \"Mozilla/5.0 \\(compatible; Googlebot/2.1; +http://www.google.com/bot.html\\)\" -o /dev/null -w \"code=%{http_code} type=%{content_type} redirect=%{redirect_url}\\\\n\" https://onlycats.icu/sitemap.xml)"
     ]
   }
 }
